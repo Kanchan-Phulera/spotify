@@ -99,12 +99,17 @@ body{
     overflow-y: auto;
     position: relative;
     min-width: 70vw;
+    overflow: hidden;
     padding-bottom: 120px;
 }
 
 /* cards right */
 .spotifyplaylist{
     padding: 16px;
+    height: calc(100% - 50px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 140px;
 }
 .spotifyplaylist h1{
     margin-bottom: 10px;
@@ -123,7 +128,6 @@ body{
     justify-content:flex-start;
     align-items: flex-start;
     gap: 16px;
-    overflow-y: scroll;
     width: 100%;
     padding-bottom: 120px;
 }
@@ -229,15 +233,14 @@ body{
 
 
 /* song 3 button pre play next */
-.playbar{
+.playbar {
     position: absolute;
-    height: 53px;
+    height: 77px;
     left: 10px;
     right: 10px;
     bottom: 10px;
     background-color: rgb(86, 88, 97);
     border-radius: 10px;
-
     padding: 12px;
     z-index: 1000;
 }
