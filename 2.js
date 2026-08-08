@@ -157,12 +157,9 @@ const playMusic = (track) => {
     console.log("currfolder:", currfolder);
     console.log("track:", track);
     console.log("URL:", url);
-
     currentSong.src = url;
     currentSong.play();
-
     document.getElementById("play").src = "pause-circle.svg";
-
     document.querySelector(".songinfo").innerHTML = decodeURIComponent(track);
     document.querySelector(".songtime").innerHTML = "00:00/00:00";
 };
@@ -298,7 +295,7 @@ const playMusic = (track) => {
 }
 async function main(){
     //let the list of all the songs from getsongs fucntion
-    /* await getsongs("songs"); */
+    await getsongs("songs");
     await displayAlbums();
 
 //DISPLAY ALL THE ALBUM ON THE SCREEN
