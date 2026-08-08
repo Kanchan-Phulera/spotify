@@ -157,7 +157,7 @@ const playMusic=(track)=>{
     currentSong.play();
     document.getElementById("play").src = "pause-circle.svg";
     /* track full name with %20manyother then we have to make it short then we use decodeuri */
-    document.querySelector(".songinfo").innerHTML=decodeURI(track);
+    document.querySelector(".songinfo").innerHTML=decodeURIComponent(track);
     document.querySelector(".songtime").innerHTML="00:00/00:00";
 }
 
@@ -356,8 +356,10 @@ document.querySelector(".hamburger").addEventListener("click",()=>{
     previous.addEventListener("click",()=>{
         console.log("previous clicked");
         console.log(currentSong.src);
-        let find=currentSong.src.split("/").slice(-1)[0];
-        let index=songs.indexOf(find);
+        let find = decodeURIComponent(
+            currentSong.src.split("/").slice(-1)[0]
+        )
+        let index = songs.indexOf(find);
         if(index >0){
             playMusic(songs[index-1]);
         }
@@ -372,9 +374,10 @@ document.querySelector(".hamburger").addEventListener("click",()=>{
     next.addEventListener("click",()=>{
         console.log("next clicked");
         /* split then last songs name */
-        let find=currentSong.src.split("/").slice(-1)[0];
-        let index=songs.indexOf(find);
-        console.log(songs,index);
+        let find = decodeURIComponent(
+            currentSong.src.split("/").slice(-1)[0]
+        )
+        let index = songs.indexOf(find);
         if(index+1 <songs.length){
             playMusic(songs[index+1]);
         }
