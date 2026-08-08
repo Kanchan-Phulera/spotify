@@ -403,7 +403,7 @@ body{
 
 /* response */
 
-@media(max-width:1400px){
+@media(max-width:768px){
     .left{
         position:absolute;
         left: -370%;
