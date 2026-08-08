@@ -150,16 +150,22 @@ async function getsongs(folder) {
 
 //playMusic fucntion
 /*  playmusic function */
-const playMusic=(track)=>{
-    /* let audio=new Audio("/songs/" +track);
-    audio.play(); */
-    currentSong.src = `./${currfolder}/${encodeURIComponent(track)}`;
+const playMusic = (track) => {
+
+    const url = `./${currfolder}/${encodeURIComponent(track)}`;
+
+    console.log("currfolder:", currfolder);
+    console.log("track:", track);
+    console.log("URL:", url);
+
+    currentSong.src = url;
     currentSong.play();
+
     document.getElementById("play").src = "pause-circle.svg";
-    /* track full name with %20manyother then we have to make it short then we use decodeuri */
-    document.querySelector(".songinfo").innerHTML=decodeURIComponent(track);
-    document.querySelector(".songtime").innerHTML="00:00/00:00";
-}
+
+    document.querySelector(".songinfo").innerHTML = decodeURIComponent(track);
+    document.querySelector(".songtime").innerHTML = "00:00/00:00";
+};
 
 /* async function displayAlbums() {
 
