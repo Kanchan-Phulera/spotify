@@ -1,0 +1,33 @@
+font-family:-"Ubuntu", sans-serif
+font-family: "Varela", sans-serif;
+
+
+
+//before
+nav{
+    font-family:"Ubuntu", sans-serif;
+
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 65px;
+    background-color: black;
+    color: white;
+}
+.brand img{
+    width: 44px;
+    object-fit: contain;
+    padding: 0 8px;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
+ nav ul li{
+    padding:  0 12px ;
+ }

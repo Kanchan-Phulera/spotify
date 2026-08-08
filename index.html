@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify- Web Player:Music for everyone</title>
+    <link rel="stylesheet" href="./2.css">
+    <link rel="stylesheet" href="./utility.css">
+</head>
+<body>
+    <div class="container flex bg-black">
+    <div class="left bg-black ">
+        <div class="close">
+            <img src="close-square.svg" class="invert">
+        </div>
+        <div class="home bg-grey rounded m-1 p-1">
+            <div class="logo"><img src="spotify-logo.svg" alt="Spotify" class="invert"></div>
+            <ul>
+                <li><img class="invert" src="home.svg">Home</li>
+                <li><img class="invert" src="search-alt-2.svg">Search</li>
+            </ul>
+        </div>
+        <div class="library bg-grey rounded m-1 p-1">
+            <div class="heading">
+                <img src="library.svg" alt="library" class="invert">
+                <h2>Your library</h2>
+            </div>
+            <div class="songlist">
+                <ul>
+                    
+                </ul>
+            </div>
+            <div class="footer">
+            <div><a href="https://www.spotify.com/legal/">Legal</a></div>
+            <div><a href="https://www.spotify.com/privacy/">Privacy Center</a></div>
+            <div><a href="https://www.spotify.com/legal/privacy-policy/">Privacy Policy</a></div>
+            <div><a href="https://www.spotify.com/legal/cookies-policy/">Cookies</a></div>
+            <div><a href="https://www.spotify.com/legal/privacy-policy/#s3">About Ads</a></div>
+            <div><a href="https://www.spotify.com/accessibility/">Accessibility</a></div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="right bg-grey rounded  p-1">
+        <!-- header -->
+         <div class="header">
+            <div class="nav">
+                <div class=" hamburgercontainer flex">
+                <img class="invert hamburger"  src="hamburger-menu.svg">
+                <img src="left-3.svg" alt="leftarrow" class="invert">
+                <img src="right-3.svg" alt="rightarrow" class="invert">
+            </div>
+            </div>
+            <div class="button">
+                <button class="signupbtn">Signup</button>
+                <button class="loginbtn">Login</button>
+            </div>
+         </div>
+         <div class="spotifyplaylist">
+            <h1>Spotify Playlist</h1>
+            <div class="cardcontainer">
+            </div>
+            </div>
+
+
+            <div class="playbar">
+                <div class="seekbar">
+                    <!-- seekbar  -->
+                    <div class="circle"></div>
+                </div>
+                <div class="abovebar">
+                <div class="songinfo">
+                    <!-- song floder -->
+                </div>
+                <div class="songbutton">
+                    <img id="previous" src="previous-999.svg">
+                    <img id="play" src="play.svg">
+                    <img id="forward" src="forward.svg">
+                </div>
+                <div class="songtime"></div>
+                    <!-- songtime -->
+                     <div class="volume">
+                        <img src="volume-max.svg" alt="volume">
+                        <div class="range">
+                            <input type="range" min="0" max="100" value="100" style="width: 90px;">
+                        </div>
+                     </div>
+                </div>
+            </div>
+    </div>
+    </div>
+    <script src="./2.js"></script>
+</body>
+</html>

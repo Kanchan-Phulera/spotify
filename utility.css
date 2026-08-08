@@ -1,0 +1,35 @@
+.flex{
+    display:  flex;
+}
+.justify-center{
+    justify-content: center;
+}
+
+.border{
+    border: solid 2px red;
+    margin: 3px;
+}
+.bg-black{
+    background-color: black;
+    color: white;
+}
+
+/* svg color change if black change white if white change to black */
+.invert{
+    filter: invert(1); 
+}
+.bg-grey{
+    background-color: #1e1e1e;
+}
+
+.rounded{
+    border-radius: 7px;
+}
+
+.m-1{
+    margin: 5px;
+}
+/* level1 padding */
+.p-1{
+    padding: 10px;
+}
