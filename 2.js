@@ -18,7 +18,7 @@ function secondsToMinutes(seconds){
 }
 
 /* get song in array same song */
-async function getsongs(folder){
+/* async function getsongs(folder){
     currfolder=folder;
     let a=await fetch(`/${currfolder}/`);
     let response=await a.text();
@@ -61,12 +61,91 @@ Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEa
     li1.addEventListener("click", () => {
     playMusic("A.mp3");
 }); */
-    e.addEventListener("click",element=>{
+    /*e.addEventListener("click",element=>{
         console.log(e.querySelector(".info").firstElementChild.innerHTML);
         playMusic(e.dataset.song);
     })
     
 })
+} */
+
+async function getsongs(folder) {
+
+    currfolder = folder;
+
+    const repo = "Kanchan-Phulera/spotify";
+
+    let res = await fetch(
+        `https://api.github.com/repos/${repo}/contents/${folder}`
+    );
+
+    if (!res.ok) {
+        console.log("Cannot load folder:", res.status);
+        return;
+    }
+
+    let files = await res.json();
+
+    songs = [];
+
+    // Find MP3 files
+    for (const file of files) {
+
+        if (file.type === "file" && file.name.endsWith(".mp3")) {
+            songs.push(file.name);
+        }
+
+    }
+
+    console.log("Songs:", songs);
+
+    let songul = document
+        .querySelector(".songlist")
+        .getElementsByTagName("ul")[0];
+
+    songul.innerHTML = "";
+
+    for (const song of songs) {
+
+        let songName = song.replace(/-\d+\.mp3$/, "");
+
+        if (songName.length > 19) {
+            songName = songName.slice(0, 19) + "...";
+        }
+
+        songul.innerHTML += `
+            <li data-song="${song}">
+                
+                <img src="music.svg" class="invert same">
+
+                <div class="info">
+                    <div>${songName}</div>
+                    <div>Song Artist</div>
+                </div>
+
+                <div class="playnow">
+                    <span>Play Now</span>
+                    <img src="play-circle.svg" class="invert same">
+                </div>
+
+            </li>
+        `;
+    }
+
+    // Add click event to each song
+    Array.from(
+        document.querySelector(".songlist").getElementsByTagName("li")
+    ).forEach(e => {
+
+        e.addEventListener("click", () => {
+
+            console.log("Playing:", e.dataset.song);
+
+            playMusic(e.dataset.song);
+
+        });
+
+    });
 }
 
 //playMusic fucntion
@@ -74,14 +153,15 @@ Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEa
 const playMusic=(track)=>{
     /* let audio=new Audio("/songs/" +track);
     audio.play(); */
-    currentSong.src = `/${currfolder}/` + track;
+    currentSong.src = `./${currfolder}/${encodeURIComponent(track)}`;
     currentSong.play();
     document.getElementById("play").src = "pause-circle.svg";
     /* track full name with %20manyother then we have to make it short then we use decodeuri */
     document.querySelector(".songinfo").innerHTML=decodeURI(track);
-    document.querySelector(".songtime").innerHTML="00:00/00:00"
+    document.querySelector(".songtime").innerHTML="00:00/00:00";
 }
-async function displayAlbums() {
+
+/* async function displayAlbums() {
 
     let a = await fetch("/songs/");
     let response = await a.text();
@@ -92,8 +172,6 @@ async function displayAlbums() {
     let anchors = div.getElementsByTagName("a");
 
     for (const e of anchors) {
-
-        // Ignore files, only process folders
         if (
             e.href.includes("/songs/") &&
             !e.href.endsWith(".mp3") &&
@@ -138,10 +216,83 @@ async function displayAlbums() {
         });
     });
     return songs;
+} */
+
+    async function displayAlbums() {
+
+    const repo = "Kanchan-Phulera/spotify";
+
+    let res = await fetch(
+        `https://api.github.com/repos/${repo}/contents/songs`
+    );
+
+    if (!res.ok) {
+        console.log("GitHub API error:", res.status);
+        return;
+    }
+
+    let folders = await res.json();
+
+    console.log("Folders:", folders);
+
+    for (const item of folders) {
+
+        // Only take folders
+        if (item.type !== "dir") {
+            continue;
+        }
+
+        let folder = item.name;
+
+        console.log("Folder:", folder);
+
+        let infoRes = await fetch(
+            `./songs/${encodeURIComponent(folder)}/info.json`
+        );
+
+        if (!infoRes.ok) {
+            console.log(`Cannot find info.json for ${folder}`);
+            continue;
+        }
+
+        let info = await infoRes.json();
+
+        cardcontainer.innerHTML += `
+            <div class="card" data-folder="${folder}">
+
+                <div class="play">
+                    <img src="play.svg" alt="playbutton">
+                </div>
+
+                <img src="./songs/${encodeURIComponent(folder)}/cover.jpg">
+
+                <h2>${info.title}</h2>
+                <p>${info.description}</p>
+
+            </div>
+        `;
+    }
+
+    // Add click event to cards
+    Array.from(document.getElementsByClassName("card")).forEach(card => {
+
+        card.addEventListener("click", async (item) => {
+
+            await getsongs(
+                `songs/${item.currentTarget.dataset.folder}`
+            );
+
+            if (songs.length > 0) {
+                playMusic(songs[0]);
+            }
+
+        });
+
+    });
 }
 async function main(){
     //let the list of all the songs from getsongs fucntion
-    await getsongs("songs");
+    /* await getsongs("songs"); */
     await displayAlbums();
 
 //DISPLAY ALL THE ALBUM ON THE SCREEN
