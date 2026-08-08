@@ -460,7 +460,7 @@ body{
         /* only phone */
         justify-content: center;
         height: auto;
-        position: fixed;
+        position: absolute;
         left: 10px;
         margin: 2px;
         padding: 12px;
