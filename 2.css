@@ -478,7 +478,7 @@ body{
     }
     
     .cardcontainer{
-        height: calc(100vh - 180px);
+        height: auto;
         margin: 0px;
     }
     .abovebar{
