@@ -432,28 +432,30 @@ body{
         margin: 0px;
     }
     .card{
-        width: 90%;
+        width: 100%;
         max-width: none;
         min-height: 320px;
-        height: auto; 
+        height: auto;
         display: flex;
         flex-direction: column;
-        border-radius: 6px;
-        margin: 0;
+        margin: 2px;
+        padding: 21px;
+        border-radius: 8px;
     }
     .card > img{
         width: 100%;
-        height: 200px;
+        height: auto;
         object-fit: cover;
+        border-radius: 7px;
     }
 
     .play{
-    right: 4px;
-    bottom: 146px;
+    right: 27px;
+    bottom: 88px;
     top: auto;
     }
     .playbar{
-        width: calc(100vw - 41px);
+        width: calc(100vw - 16px);
         /* only phone */
         justify-content: center;
         height: auto;
