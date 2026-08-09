@@ -58,15 +58,14 @@ body{
 .heading img{
     width: 25px;
 }
-
 .footer{
     display: flex;
-    font-size: 18px;
-    gap: 13px;
+    font-size: 17px;
+    gap: 17px;
     position: absolute;
     bottom: 0;
-
-
+    box-sizing: border-box;
+    flex-wrap: wrap;
 }
 .footer a{
     color: white;
@@ -262,7 +261,7 @@ body{
 }
 
 .songlist{
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     height: 644px;
     overflow:auto;
 }
@@ -411,7 +410,6 @@ body{
         transition: all 0.3s;
         z-index: 1;
         width: 370px;
-        padding: 0;
     }
     /* close p ut when */
     .left .close{
@@ -430,6 +428,7 @@ body{
     .right{
         width: 100vw;
         margin: 0px;
+        padding-bottom: 164px;
     }
     .card{
         width: 100%;
@@ -439,9 +438,10 @@ body{
         display: flex;
         flex-direction: column;
         margin: 2px;
-        padding: 21px;
+        padding: 6px;
         border-radius: 8px;
     }
+
     .card > img{
         width: 100%;
         height: auto;
