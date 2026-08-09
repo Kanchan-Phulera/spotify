@@ -234,10 +234,10 @@ body{
 
 /* song 3 button pre play next */
 .playbar {
-    position: absolute;
+    position: fixed;
     height: 77px;
-    left: 10px;
-    right: 10px;
+    left: 531px;
+    right: 55px;
     bottom: 10px;
     background-color: rgb(86, 88, 97);
     border-radius: 10px;
