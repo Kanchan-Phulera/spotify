@@ -236,8 +236,8 @@ body{
 .playbar {
     position: fixed;
     height: 77px;
-    left: 531px;
-    right: 55px;
+    left: 543px;
+    right: 68px;
     bottom: 10px;
     background-color: rgb(86, 88, 97);
     border-radius: 10px;
